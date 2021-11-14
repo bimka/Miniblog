@@ -1,0 +1,26 @@
+{% extends "blog/base.html" %}
+{% block content %}
+    {% if jokes_pages %}
+        {% for joke in jokes_pages %}
+            <div class="container">
+                <div class="right-align"># {{joke.id}}</div>
+                <div>{{joke.joke_text}}</div>
+                <div class="right-align"><a href="pass" shape="None">&#8211</a> | {{joke.joke_rating}} | <a href="pass">+</a></div>
+            </div>
+        {% endfor %}
+        <ul>
+            {% if jokes_pages.has_previous %}
+                <li><a href = "?page={{ jokes_pages.previous_page_number }}">Предыдущая страница</a></li>
+                {% else %}
+                <li><a title = "Предыдущей страницы нет">Предыдущая страница</a></li>
+                {% endif %}
+            {% if jokes_pages.has_next %}
+                <li><a href = "?page={{ jokes_pages.next_page_number }}">Следующая страница</a></li>
+                {% else %}
+                <li><a title = "Следующей страницы нет">Следующая страница</a></li>
+                {% endif %}
+        </ul>
+    {% else %}
+        <p>В базе данных нет анекдотов</p>
+    {% endif %}
+{% endblock %}
