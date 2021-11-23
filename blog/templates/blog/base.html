@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}" type = "text/css">
 </head>
 <body>
+    <p><a href="{% url 'add_a_joke' %}">Добавить свой анекдот</a></p>
     {% block content %}{% endblock %}
     {% block footer %}
     <hr>

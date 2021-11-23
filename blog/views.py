@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.views import View
+from django.urls import reverse_lazy
+from django.views.generic.edit import CreateView
 
 from .models import Jokes
 
@@ -18,3 +21,9 @@ def index(request):
         'jokes_pages': jokes_pages,
     }
     return HttpResponse(template.render(context, request))
+
+class Add_a_joke(CreateView):
+    success_url = reverse_lazy('add_a_joke')
+    model = Jokes
+    fields = '__all__'
+    
