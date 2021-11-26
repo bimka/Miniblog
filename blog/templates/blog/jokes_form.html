@@ -5,6 +5,6 @@
     <table>
         {{ form.as_table }}
     </table>
-    <input type = "submit" value = "Отправить шутку">
+    <input type = "submit" onclick = "window.location = '{% url 'index' %}';" value = "Отправить шутку">
     <input type = "submit" onclick = "window.location = '{% url 'index' %}';" value = "Отмена">
 </form>
