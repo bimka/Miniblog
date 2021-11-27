@@ -6,11 +6,11 @@
     <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}" type = "text/css">
 </head>
 <body>
-    <p><a href="{% url 'add_a_joke' %}">Добавить свой анекдот</a></p>
+ 
     {% block content %}{% endblock %}
     {% block footer %}
     <hr>
-    <p class="footer">Спасибо за просмотр!</p>
+    <p class="center">Спасибо за просмотр!</p>
     {% endblock %}
 </body>    
 </html>
