@@ -23,7 +23,7 @@ def index(request):
     return HttpResponse(template.render(context, request))
 
 class Add_a_joke(CreateView):
-    success_url = reverse_lazy('add_a_joke')
+    success_url = reverse_lazy('index')
     model = Jokes
-    fields = '__all__'
+    fields = ['joke_text']
     
