@@ -11,7 +11,7 @@ from .models import Jokes
 from .form import Form_for_add_joke
 
 def index(request):
-    jokes_list = Jokes.objects.all()
+    jokes_list = Jokes.objects.all().order_by("-id")
     paginator = Paginator(jokes_list, 8)
     page = request.GET.get('page')
     try:
