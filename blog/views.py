@@ -6,7 +6,9 @@ from django.views import View
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 
+
 from .models import Jokes
+from .form import Form_for_add_joke
 
 def index(request):
     jokes_list = Jokes.objects.all()
@@ -24,6 +26,7 @@ def index(request):
 
 class Add_a_joke(CreateView):
     success_url = reverse_lazy('index')
-    model = Jokes
+    model = Form_for_add_joke
     fields = ['joke_text']
+ #    form = Form_for_add_joke()
     
