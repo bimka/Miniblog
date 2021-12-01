@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import loader
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -8,7 +8,7 @@ from django.views.generic.edit import CreateView
 
 
 from .models import Jokes
-from .form import Form_for_add_joke
+from .form import JokesForm
 
 def index(request):
     jokes_list = Jokes.objects.all().order_by("-id")
@@ -23,10 +23,18 @@ def index(request):
         'jokes_pages': jokes_pages,
     }
     return HttpResponse(template.render(context, request))
-
+"""
 class Add_a_joke(CreateView):
     success_url = reverse_lazy('index')
     model = Form_for_add_joke
     fields = ['joke_text']
- #    form = Form_for_add_joke()
+"""
+def joke_new(request):
+    if request.method == "POST":
+        form = JokesForm(request.POST)
+        form.save()
+        return redirect('index')
+    else:
+        form = JokesForm()
+    return render(request, 'blog/jokes_form.html', {'form': form})
     
