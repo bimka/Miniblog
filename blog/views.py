@@ -4,7 +4,7 @@ from django.template import loader
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views import View
 from django.urls import reverse_lazy
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import UpdateView, DeleteView
 
 
 from .models import Jokes
@@ -35,7 +35,13 @@ def joke_new(request):
 
 class JokesUpdate(UpdateView):
     model = Jokes
-    fields = ('joke_text',)
+    fields = ('joke_text', 'id')
+    success_url = reverse_lazy('index')
+    template_name_suffix = '_update'
+
+class JokesDelete(DeleteView):
+    model = Jokes    
     success_url = reverse_lazy('index') 
+
     
     

@@ -1,0 +1,12 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+
+<h1>Удаление шутки </h1>
+<p>Вы действительно хотите удалить анекдот?</p>
+<form action="" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Да, удалить">
+    <input type="submit" value="Отмена">
+</form>
+{% endblock %}
