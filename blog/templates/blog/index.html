@@ -1,24 +1,48 @@
 {% extends "blog/base.html" %}
 {% block content %}
-<p class="center"><a href="{% url 'add_a_joke' %}">Добавить свой анекдот</a></p>
+<p class="center">
+    <a href="{% url 'add_a_joke' %}">Добавить свой анекдот</a>
+</p>
     {% if jokes_pages %}
         {% for joke in jokes_pages %}
             <div class="container">
-                <div class="right-align">{{ joke.date_of_creation.date }} # {{joke.id}}</div>
-                <div>{{joke.joke_text}}</div>
-                <div class="right-align"><a href="pass" shape="None">&#8211</a> | {{joke.joke_rating}} | <a href="pass">+</a></div>
+                <div class="right-align">
+                    {{ joke.date_of_creation.date }} # {{joke.id}}
+                </div>
+                <div>{{joke.joke_text|linebreaksbr }}</div>
+                <div class="right-align">
+                    <a href="pass" shape="None">&#8211</a>
+                     | {{joke.joke_rating}} | 
+                     <a href="pass">+</a>
+                </div>
             </div>
         {% endfor %}
         <ul class = "center">
             {% if jokes_pages.has_previous %}
-                <li><a href = "?page={{ jokes_pages.previous_page_number }}">Предыдущая страница</a></li>
+                <li>
+                    <a href = "?page={{ jokes_pages.previous_page_number }}">
+                        Предыдущая страница
+                    </a>
+                </li>
                 {% else %}
-                <li><a title = "Предыдущей страницы нет">Предыдущая страница</a></li>
+                <li>
+                    <a title = "Предыдущей страницы нет">
+                        Предыдущая страница
+                    </a>
+                </li>
                 {% endif %}
             {% if jokes_pages.has_next %}
-                <li><a href = "?page={{ jokes_pages.next_page_number }}">Следующая страница</a></li>
+                <li>
+                    <a href = "?page={{ jokes_pages.next_page_number }}">
+                        Следующая страница
+                    </a>
+                </li>
                 {% else %}
-                <li><a title = "Следующей страницы нет">Следующая страница</a></li>
+                <li>
+                    <a title = "Следующей страницы нет">
+                        Следующая страница
+                    </a>
+                </li>
                 {% endif %}
         </ul>
     {% else %}
