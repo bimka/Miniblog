@@ -4,7 +4,7 @@ from django.template import loader
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views import View
 from django.urls import reverse_lazy
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import UpdateView
 
 
 from .models import Jokes
@@ -23,12 +23,7 @@ def index(request):
         'jokes_pages': jokes_pages,
     }
     return HttpResponse(template.render(context, request))
-"""
-class Add_a_joke(CreateView):
-    success_url = reverse_lazy('index')
-    model = Form_for_add_joke
-    fields = ['joke_text']
-"""
+
 def joke_new(request):
     if request.method == "POST":
         form = JokesForm(request.POST)
@@ -37,4 +32,10 @@ def joke_new(request):
     else:
         form = JokesForm()
     return render(request, 'blog/jokes_form.html', {'form': form})
+
+class JokesUpdate(UpdateView):
+    model = Jokes
+    fields = ('joke_text',)
+    success_url = reverse_lazy('index') 
+    
     

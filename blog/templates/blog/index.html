@@ -11,6 +11,9 @@
                 </div>
                 <div>{{joke.joke_text|linebreaksbr }}</div>
                 <div class="right-align">
+                    <a href="{% url 'joke_update' joke.id %}">
+                        Редактировать
+                    </a>
                     <a href="pass" shape="None">&#8211</a>
                      | {{joke.joke_rating}} | 
                      <a href="pass">+</a>
