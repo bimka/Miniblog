@@ -35,7 +35,7 @@ def joke_new(request):
 
 class JokesUpdate(UpdateView):
     model = Jokes
-    fields = ('joke_text', 'id')
+    fields = ('joke_text', 'id', 'joke_rating')
     success_url = reverse_lazy('index')
     template_name_suffix = '_update'
 

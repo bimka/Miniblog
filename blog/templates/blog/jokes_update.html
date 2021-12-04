@@ -1,16 +1,17 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-<script>
-    function button_click() {
-        window.location="{% url 'joke_delete' joke.id %}";
-    }
-</script>
+
+<p>id = </p>  
+{% for f in form %}
+{{f}}
+{% endfor %}
+<br>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
+  
     <input type="submit" value="Обновить шутку">
     <input type="button" onclick="window.location='{% url "index" %}';" value="Отмена">
-    <input type="button" onclick='button_click()' value="Удалить шутку">
 </form>
 {% endblock %}

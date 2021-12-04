@@ -9,4 +9,7 @@ class Jokes(models.Model):
         )
     joke_rating = models.IntegerField(default = random.randint(1, 10))
     date_of_creation = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.id
     
