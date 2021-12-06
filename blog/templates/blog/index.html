@@ -1,11 +1,13 @@
-{% extends "blog/base.html" %}
+{% extends "blog/base_bootstrap.html" %}
 {% block content %}
 <p class="center">
     <a href="{% url 'add_a_joke' %}">Добавить свой анекдот</a>
 </p>
+    <div class="container">
     {% if jokes_pages %}
+        <div class="flex-column">
         {% for joke in jokes_pages %}
-            <div class="container">
+            <div class="joke col-sm-2 col-md-6 col-lg-12">
                 <div class="right-align">
                     {{ joke.date_of_creation.date }} # {{joke.id}}
                 </div>
@@ -20,10 +22,11 @@
                 </div>
             </div>
         {% endfor %}
+        </div>
         <ul class = "center">
             {% if jokes_pages.has_previous %}
                 <li>
-                    <a href = "?page={{ jokes_pages.previous_page_number }}">
+                    <a href = "?page={{ jokes_pages.previous_page_number }}" class = "btn btn-succes">
                         Предыдущая страница
                     </a>
                 </li>
@@ -36,7 +39,7 @@
                 {% endif %}
             {% if jokes_pages.has_next %}
                 <li>
-                    <a href = "?page={{ jokes_pages.next_page_number }}">
+                    <a href = "?page={{ jokes_pages.next_page_number }}" class = "btn btn-succes">
                         Следующая страница
                     </a>
                 </li>
@@ -51,4 +54,5 @@
     {% else %}
         <p>В базе данных нет анекдотов</p>
     {% endif %}
+    </div>
 {% endblock %}

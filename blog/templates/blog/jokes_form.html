@@ -1,5 +1,6 @@
-{% extends "blog/base.html" %}
+{% extends "blog/base_bootstrap.html" %}
 {% block content %}
+<div class="container">
 <h1>Добавь свою шутку</h1>
 <form action= "" method = "post">
     {% csrf_token %}
@@ -9,4 +10,5 @@
     <input type = "submit" value = "Отправить шутку">
     <input type = "submit" value = "Отмена">
 </form>
+</div>
 {% endblock %}
