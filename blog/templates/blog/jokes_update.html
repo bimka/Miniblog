@@ -1,18 +1,13 @@
 {% extends "blog/base_bootstrap.html" %}
 
-{% block content %}
+{% load crispy_forms_tags %}
 
-<p>id = </p>  
-{{ form }}
-{% for f in form %}
-{{ pk }}
-{{ ola }}
-{{f}}
-{% endfor %}
-<br>
+{% block content %}
+<h1>Обновить шутку</h1>
+<br>{{PATH_INFO}}
 <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
+    {{ form.as_table }}
   
     <input type="submit" value="Обновить шутку">
     <input type="button" onclick="window.location='{% url "index" %}';" value="Отмена">

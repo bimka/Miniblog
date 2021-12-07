@@ -32,11 +32,19 @@ def joke_new(request):
     else:
         form = JokesForm()
     return render(request, 'blog/jokes_form.html', {'form': form})
-
+"""
+def joke_update(request):
+    if request.method == "POST":
+        form = JokesForm(request.POST)
+        form.save()
+        return redirect('index')
+    else:
+        form = JokesForm()
+    return render(request, 'blog/jokes_update.html', {'form': form})
+"""
 class JokesUpdate(UpdateView):
     model = Jokes
-    ola = model.id
-    fields = ('joke_text', 'joke_rating',)
+    fields = ['joke_text', 'joke_rating',]
     success_url = reverse_lazy('index')
     template_name_suffix = '_update'
 

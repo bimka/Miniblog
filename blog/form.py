@@ -9,4 +9,10 @@ class JokesForm(forms.ModelForm):
         model = Jokes
         fields = ('joke_text',)
 
+class JokeUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Jokes
+        fields = ('joke_text', 'joke_rating', 'id',)
+    
+
         
