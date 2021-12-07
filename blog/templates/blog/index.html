@@ -2,8 +2,7 @@
 {% block content %}
 <p class="center">
     <a href="{% url 'add_a_joke' %}">Добавить свой анекдот</a>
-</p>
-    <div class="container">
+</p>    
     {% if jokes_pages %}
         <div class="flex-column">
         {% for joke in jokes_pages %}
@@ -22,7 +21,6 @@
                 </div>
             </div>
         {% endfor %}
-        </div>
         <ul class = "center">
             {% if jokes_pages.has_previous %}
                 <li>
