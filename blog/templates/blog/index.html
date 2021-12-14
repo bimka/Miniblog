@@ -1,9 +1,7 @@
 {% extends "blog/base_bootstrap.html" %}
 
 {% block content %}
-<p class="center">
-    <a href="{% url 'add_a_joke' %}">Добавить свой анекдот</a>
-</p>    
+   
     {% if jokes_pages %}
         <div class="flex-column">
         {% for joke in jokes_pages %}

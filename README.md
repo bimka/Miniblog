@@ -10,6 +10,3 @@ ____
  
 email: mintdragon@yandex.ru   
 telegram: @bimkaa
-
-
-777
