@@ -29,7 +29,7 @@ def index(request):
 #    set_cookie('last_view', datetime.now(), max_age = 259200)
     return HttpResponse(template.render(context, request))
 
-def joke_new(request):
+def joke_new(self, request):
     if request.method == "POST":
         form = JokesForm(request.POST)
         form.save()
