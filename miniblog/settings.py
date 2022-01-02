@@ -136,3 +136,5 @@ STATICFILES_DIRS = [
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+#SESION_ENGINE = "django.contrib.sessions.backends.signed_cookies"

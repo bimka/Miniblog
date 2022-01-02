@@ -11,7 +11,7 @@ class Jokes(models.Model):
     joke_rating = models.IntegerField(default = random.randint(1, 10))
     date_of_creation = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(settings.AUTH_USER_MODEL,
-        on_delete = models.CASCADE, null=True)
+        on_delete = models.CASCADE)
 
     def get_id(self):
         return self.id

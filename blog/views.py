@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import loader
@@ -9,6 +11,8 @@ from django.views.generic.edit import UpdateView, DeleteView
 
 from .models import Jokes
 from .form import JokesForm
+
+
 
 def index(request):
     jokes_list = Jokes.objects.all().order_by("-id")
@@ -22,6 +26,7 @@ def index(request):
     context = {
         'jokes_pages': jokes_pages,
     }
+#    set_cookie('last_view', datetime.now(), max_age = 259200)
     return HttpResponse(template.render(context, request))
 
 def joke_new(request):
