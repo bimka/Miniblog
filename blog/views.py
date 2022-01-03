@@ -7,6 +7,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views import View
 from django.urls import reverse_lazy
 from django.views.generic.edit import UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 from .models import Jokes
@@ -29,15 +30,35 @@ def index(request):
 #    set_cookie('last_view', datetime.now(), max_age = 259200)
     return HttpResponse(template.render(context, request))
 
+class Joke_new(LoginRequiredMixin, View):
+    model = Jokes
+    fields = ('joke_text',)
+    template_name =  'blog/jokes_form.html'
+
+    def get(self, request):
+        form = JokesForm()
+        context = {'form': form}
+        return render(request, self.template_name, context)
+
+    def post(self, request):
+        form = JokesForm(request.POST)
+        joke_new = form.save(commit = False)
+        joke_new.owner = self.request.user
+        joke_new.save()
+        return redirect('index')
+
+"""
 def joke_new(self, request):
     if request.method == "POST":
         form = JokesForm(request.POST)
-        form.save()
+        joke_new = form.save(commit = False)
+        joke_new.owner = self.request.user
+        joke_new.save()
         return redirect('index')
     else:
         form = JokesForm()
     return render(request, 'blog/jokes_form.html', {'form': form})
-"""
+
 def joke_update(request):
     if request.method == "POST":
         form = JokesForm(request.POST)
