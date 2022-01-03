@@ -11,13 +11,11 @@
                 </div>
                 <div>{{joke.joke_text|linebreaksbr }}</div>
                 <div class="right-align">
-                    {% if user.id == joke.owner %}
+                    {% if user.id == joke.owner.id %}
                         <a href="{% url 'joke_update' joke.id %}">
                             Редактировать
                         </a>
                     {% endif %}
-                    <p>{{user.id}}</p>
-                    <p>{{joke.owner}}</p>
                     <a href="pass" shape="None">&#8211</a>
                      | {{joke.joke_rating}} | 
                      <a href="pass">+</a>
