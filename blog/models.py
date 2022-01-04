@@ -15,4 +15,3 @@ class Jokes(models.Model):
 
     def get_id(self):
         return self.id
-    

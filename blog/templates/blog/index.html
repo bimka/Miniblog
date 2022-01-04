@@ -17,7 +17,7 @@
                         </a>
                     {% endif %}
                     <a href="pass" shape="None">&#8211</a>
-                     | {{joke.joke_rating}} | 
+                     |  {{ perem }}   | 
                      <a href="pass">+</a>
                 </div>
             </div>
@@ -54,4 +54,14 @@
         <p>В базе данных нет анекдотов</p>
     {% endif %}
     </div>
+
+<script>
+    alert('Ola!')
+    function plus_minus_rating() {
+        return 100;
+    }
+    perem = 200;
+</script>
 {% endblock %}
+
+# {{joke.joke_rating}}
