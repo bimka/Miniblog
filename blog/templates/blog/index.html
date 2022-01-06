@@ -17,7 +17,7 @@
                         </a>
                     {% endif %}
                     <a href="" shape="None">&#8211</a>
-                     |  <span id='hi'>{{joke.joke_rating}}</span>   | 
+                     |  <span class='hi'></span>   | 
                      <a href="" onclick="">+</a>
                 </div>
             </div>
@@ -55,9 +55,11 @@
     {% endif %}
     </div>
 
+
+
 <script type="text/javascript">
-    var joke_rating = '{{ joke.joke_rating }}';
-    document.getElementById('hi').innerHTML = joke_rating;
+    if (window.jQuery) alert("jQuery подключен");
+    else alert("jQuery не подключен");
 </script>
 {% endblock %}
 
