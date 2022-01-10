@@ -47,27 +47,6 @@ class Joke_new(LoginRequiredMixin, View):
         joke_new.save()
         return redirect('index')
 
-"""
-def joke_new(self, request):
-    if request.method == "POST":
-        form = JokesForm(request.POST)
-        joke_new = form.save(commit = False)
-        joke_new.owner = self.request.user
-        joke_new.save()
-        return redirect('index')
-    else:
-        form = JokesForm()
-    return render(request, 'blog/jokes_form.html', {'form': form})
-
-def joke_update(request):
-    if request.method == "POST":
-        form = JokesForm(request.POST)
-        form.save()
-        return redirect('index')
-    else:
-        form = JokesForm()
-    return render(request, 'blog/jokes_update.html', {'form': form})
-"""
 class JokesUpdate(UpdateView):
     model = Jokes
     fields = ['joke_text', 'joke_rating',]
