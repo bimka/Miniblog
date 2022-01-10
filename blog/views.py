@@ -27,7 +27,6 @@ def index(request):
     context = {
         'jokes_pages': jokes_pages,
     }
-#    set_cookie('last_view', datetime.now(), max_age = 259200)
     return HttpResponse(template.render(context, request))
 
 class Joke_new(LoginRequiredMixin, View):
