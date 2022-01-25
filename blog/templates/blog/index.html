@@ -17,7 +17,7 @@
                         </a>
                     {% endif %}
                     <a href="" shape="None">&#8211</a>
-                     |  <span id='hi'>{{ joke.joke_rating }}</span>   | 
+                     |  <span class='hi'>{{ joke.joke_rating }}</span>   | 
                      <a href="" onclick="">+</a>
                 </div>
             </div>
@@ -57,7 +57,7 @@
 
 <script>
     $(document).ready(function(){
-        $("li").css("color", "red");
+        $(".hi").text(+$(".hi").text());
     });
 </script>
 
